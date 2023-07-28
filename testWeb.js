@@ -16,7 +16,7 @@ describe("Automated Test Cases", function () {
   });
 
   it("Test Case 1 - {value} = fashion", async function () {
-    const email = "testjoni123@gmail.com";
+    const email = "bilulautomationtest1@gmail.com";
     const value = "fashion";
     await performRegistrationTest(email, value);
     await validateDashboardApps([
@@ -31,7 +31,7 @@ describe("Automated Test Cases", function () {
   }, 3000);
 
   it("Test Case 2 - {value} = santander", async function () {
-    const email = "testgoofyah4645@gmail.com";
+    const email = "bilulautomationtest2@gmail.com";
     const value = "santander";
     await performRegistrationTest(email, value);
     await validateDashboardApps([
@@ -49,9 +49,9 @@ describe("Automated Test Cases", function () {
 
     // fill information user
     await driver.findElement(By.css(".two-column-form-wrapper > peb-form-field-input:nth-of-type(1) .label-text")).click();
-    await driver.findElement(By.css("[formcontrolname='firstName']")).sendKeys("Zeus");
+    await driver.findElement(By.css("[formcontrolname='firstName']")).sendKeys("Muhammad");
     await driver.findElement(By.className("label-text ng-tns-c170-2 ng-trigger ng-trigger-isFocusedLabel ng-star-inserted")).click();
-    await driver.findElement(By.css("[formcontrolname='lastName']")).sendKeys("Gacor");
+    await driver.findElement(By.css("[formcontrolname='lastName']")).sendKeys("Bilal");
     await driver.findElement(By.className("ng-tns-c170-3 label-input-content-wrapper")).click();
     await driver.findElement(By.css("[type='email']")).sendKeys(email);
     await driver.findElement(By.className("label-text ng-tns-c170-4 ng-trigger ng-trigger-isFocusedLabel ng-star-inserted")).click();
@@ -74,16 +74,18 @@ describe("Automated Test Cases", function () {
       await driver.findElement(By.css("[formcontrolname='phoneNumber']")).sendKeys("6657567576");
     } else if (value === "santander") {
       // for santander
-      await driver.findElement(By.xpath("//peb-form-field-input[@class='ng-tns-c170-8 ng-star-inserted']"));
+      await driver.wait(until.elementLocated(By.css(".form-background-wrapper > peb-form-field-input:nth-of-type(1) .label-text")), 10000);
+      await driver.findElement(By.css(".form-background-wrapper > peb-form-field-input:nth-of-type(1) .label-text")).click();
       await driver.findElement(By.xpath("//input[@class='ng-tns-c170-8 ng-untouched ng-pristine ng-invalid']")).sendKeys("My Santander Business");
       await driver.findElement(By.className("label-container ng-tns-c170-11 form-label")).click();
       await driver.findElement(By.css("mat-option:nth-of-type(6)")).click();
-      await driver.findElement(By.css("[_ngcontent-jej-c318] .label-container")).click();
+      await driver.findElement(By.className("label-container ng-tns-c212-12 ng-star-inserted")).click();
       await driver.findElement(By.css("peb-select-option:nth-of-type(98)")).click();
-      await driver.findElement(By.css(".two-column-form-wrapper .label-input-content-wrapper .label-text")).click();
-      await driver.findElement(By.css("[formcontrolname='phoneNumber']")).sendKeys("1234567890");
-      await driver.findElement(By.css("peb-form-field-input:nth-of-type(2) .label-text")).click();
-      await driver.findElement(By.css("peb-form-field-input:nth-of-type(2) [_ngcontent-jej-c322]")).sendKeys("787987877899");
+      await driver.findElement(By.className("label-text ng-tns-c170-13 ng-trigger ng-trigger-isFocusedLabel ng-star-inserted")).click();
+      await driver.findElement(By.css("[pephoneinputfilter]")).sendKeys("1234567890");
+      await driver.findElement(By.className("label-text ng-tns-c170-14 ng-trigger ng-trigger-isFocusedLabel ng-star-inserted")).click();
+      // await driver.sleep(2000);
+      // await driver.findElement(By.css("ng-tns-c170-14 ng-touched ng-dirty ng-invalid")).sendKeys("787987877899");
     }
 
     // register account
